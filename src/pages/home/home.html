@@ -1,14 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Quiz
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card *ngFor="let q of question; index as i">
+    <ion-item>
+      <p>{{q.q}}</p>
+    </ion-item>
+
+
+    <ion-list radio-group>
+      <ion-item>
+        <ion-label>{{q.a}}</ion-label>
+        <ion-radio (ionSelect)="ansChck(q.a , i)"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{q.b}}</ion-label>
+        <ion-radio (ionSelect)="ansChck(q.b,i)"></ion-radio>
+      </ion-item>
+      <ion-item *ngIf="q.c != ''">
+        <ion-label>{{q.c}}</ion-label>
+        <ion-radio (ionSelect)="ansChck(q.c,i)"></ion-radio>
+      </ion-item>
+      <ion-item *ngIf="q.d != ''">
+        <ion-label>{{q.d}}</ion-label>
+        <ion-radio (ionSelect)="ansChck(q.d,i)"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <button ion-button block outline (click)="submit()">Submit</button>
 </ion-content>
