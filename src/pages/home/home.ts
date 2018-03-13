@@ -22,7 +22,8 @@ export class HomePage {
       isDisable: false
     },
     {
-      q: " Which of the following is the correct syntax to redirect a url using javascript",
+      q:
+        " Which of the following is the correct syntax to redirect a url using javascript",
       a: 'document.location="http://www.newlocation.com"',
       b: 'window.location="http://www.newlocation.com',
       c: 'browser.location="http://www.newlocation.com"',
@@ -116,7 +117,11 @@ export class HomePage {
   ];
 
   constructor(public navCtrl: NavController) {}
-
+  
+  
+  ionViewWillEnter() {
+    this.counter = 0;
+  }
   ansChck(a, i) {
     console.log("checked value " + a + " " + i);
 
